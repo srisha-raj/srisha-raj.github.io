@@ -9,204 +9,145 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
-    --rose:        #f2c4ce;
-    --rose-light:  #fbedf0;
-    --rose-mid:    #e8a0b0;
-    --rose-deep:   #c8708a;
-    --lavender:    #ddd6f3;
-    --lav-light:   #f0edfb;
-    --cream:       #fdf8f4;
-    --parchment:   #f6efe6;
-    --ink:         #2d2230;
-    --ink-mid:     #5a4a55;
-    --ink-light:   #9a8a95;
-    --serif: 'Lora', Georgia, serif;
-    --sans:  'DM Sans', sans-serif;
+    --rose:#f2c4ce;--rose-light:#fbedf0;--rose-mid:#e8a0b0;--rose-deep:#c8708a;
+    --lavender:#ddd6f3;--lav-light:#f0edfb;--cream:#fdf8f4;--parchment:#f6efe6;
+    --ink:#2d2230;--ink-mid:#5a4a55;--ink-light:#9a8a95;
+    --serif:'Lora',Georgia,serif;--sans:'DM Sans',sans-serif;
   }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--sans);background:var(--cream);color:var(--ink);line-height:1.7;overflow-x:hidden;}
 
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { font-family: var(--sans); background: var(--cream); color: var(--ink); line-height: 1.7; overflow-x: hidden; }
+  /* NAV */
+  nav{position:sticky;top:0;z-index:100;background:rgba(253,248,244,0.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--rose);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:58px;}
+  .nav-brand{display:flex;align-items:center;text-decoration:none;}
+  .nav-logo{font-family:var(--serif);font-size:1.05rem;font-style:italic;color:var(--ink);}
+  .nav-divider{width:1px;height:22px;background:var(--rose);margin:0 12px;}
+  .nav-vol{font-family:var(--sans);font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-light);}
+  .nav-links{display:flex;gap:2rem;list-style:none;}
+  .nav-links a{font-family:var(--sans);font-size:0.74rem;color:var(--ink-mid);text-decoration:none;letter-spacing:0.07em;text-transform:uppercase;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--ink);}
 
-  /* ── NAV ── */
-  nav {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(253,248,244,0.94); backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--rose);
-    padding: 0 2.5rem;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 58px;
-  }
-  .nav-brand { display: flex; align-items: center; text-decoration: none; }
-  .nav-logo { font-family: var(--serif); font-size: 1.05rem; font-style: italic; color: var(--ink); }
-  .nav-divider { width: 1px; height: 22px; background: var(--rose); margin: 0 12px; }
-  .nav-vol { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a { font-family: var(--sans); font-size: 0.74rem; color: var(--ink-mid); text-decoration: none; letter-spacing: 0.07em; text-transform: uppercase; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--ink); }
+  /* HERO */
+  .hero{max-width:1120px;margin:0 auto;min-height:92vh;display:grid;grid-template-columns:1fr auto;align-items:center;gap:5rem;padding:5.5rem 2.5rem 4rem;}
+  .dateline{font-family:var(--sans);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-light);margin-bottom:1.3rem;display:flex;align-items:center;gap:10px;}
+  .dateline::before,.dateline::after{content:'';flex:0 0 28px;height:1px;background:var(--rose-mid);}
+  .hero h1{font-family:var(--serif);font-size:clamp(2.8rem,4.5vw,4.2rem);font-weight:400;line-height:1.1;color:var(--ink);margin-bottom:0.9rem;}
+  .hero h1 em{font-style:italic;color:var(--rose-deep);}
+  .ornament{display:flex;align-items:center;gap:8px;margin-bottom:1.4rem;}
+  .orn-line{flex:0 0 36px;height:1px;background:var(--rose-mid);}
+  .orn-diamond{width:5px;height:5px;background:var(--rose-mid);transform:rotate(45deg);flex-shrink:0;}
+  .orn-line-long{flex:1;height:1px;background:var(--rose);}
+  .hero-bio{font-family:var(--sans);font-size:1rem;color:var(--ink-mid);font-weight:300;line-height:1.9;margin-bottom:2.2rem;max-width:480px;}
+  .hero-bio a{color:var(--rose-deep);text-decoration:none;font-style:italic;}
+  .stat-symbols{font-family:var(--serif);font-size:0.82rem;color:var(--rose-mid);letter-spacing:0.28em;margin-bottom:2.2rem;font-style:italic;opacity:0.75;}
+  .hero-ctas{display:flex;gap:10px;flex-wrap:wrap;}
+  .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 22px;border-radius:50px;font-family:var(--sans);font-size:0.85rem;font-weight:500;text-decoration:none;cursor:pointer;border:none;transition:all 0.2s;}
+  .btn-primary{background:var(--ink);color:var(--cream);}
+  .btn-primary:hover{background:#4a3545;}
+  .btn-outline{background:transparent;color:var(--ink);border:1px solid var(--rose-mid);}
+  .btn-outline:hover{background:var(--rose-light);}
 
-  /* ── HERO ── */
-  .hero {
-    max-width: 1120px; margin: 0 auto;
-    min-height: 92vh;
-    display: grid; grid-template-columns: 1fr auto;
-    align-items: center; gap: 5rem;
-    padding: 5.5rem 2.5rem 4rem;
-  }
-  .dateline {
-    font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--ink-light); margin-bottom: 1.3rem;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .dateline::before, .dateline::after { content: ''; flex: 0 0 28px; height: 1px; background: var(--rose-mid); }
-  .hero h1 { font-family: var(--serif); font-size: clamp(2.8rem, 4.5vw, 4.2rem); font-weight: 400; line-height: 1.1; color: var(--ink); margin-bottom: 0.9rem; }
-  .hero h1 em { font-style: italic; color: var(--rose-deep); }
-  .ornament { display: flex; align-items: center; gap: 8px; margin-bottom: 1.4rem; }
-  .orn-line { flex: 0 0 36px; height: 1px; background: var(--rose-mid); }
-  .orn-diamond { width: 5px; height: 5px; background: var(--rose-mid); transform: rotate(45deg); flex-shrink: 0; }
-  .orn-line-long { flex: 1; height: 1px; background: var(--rose); }
-  .hero-bio { font-family: var(--sans); font-size: 1rem; color: var(--ink-mid); font-weight: 300; line-height: 1.9; margin-bottom: 2.2rem; max-width: 480px; }
-  .stat-symbols { font-family: var(--serif); font-size: 0.82rem; color: var(--rose-mid); letter-spacing: 0.28em; margin-bottom: 2.2rem; font-style: italic; opacity: 0.75; }
-  .hero-ctas { display: flex; gap: 10px; flex-wrap: wrap; }
-  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 22px; border-radius: 50px; font-family: var(--sans); font-size: 0.85rem; font-weight: 500; text-decoration: none; cursor: pointer; border: none; transition: all 0.2s; }
-  .btn-primary { background: var(--ink); color: var(--cream); }
-  .btn-primary:hover { background: #4a3545; }
-  .btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--rose-mid); }
-  .btn-outline:hover { background: var(--rose-light); }
+  /* HERO IMAGE */
+  .hero-image-col{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:10px;}
+  .sphere-wrap{position:relative;width:340px;}
+  .sphere-img{width:100%;display:block;border-radius:3px;filter:sepia(12%) brightness(0.98) contrast(0.97);box-shadow:0 0 0 1px var(--rose),0 0 0 6px var(--parchment),0 0 0 7px var(--rose),0 8px 40px rgba(180,120,140,0.18);transition:filter 0.5s;}
+  .sphere-wrap:hover .sphere-img{filter:sepia(4%) brightness(1.01);}
+  .img-caption{font-family:var(--serif);font-size:0.7rem;font-style:italic;color:var(--ink-light);text-align:center;}
 
-  /* ── HERO IMAGE ── */
-  .hero-image-col { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 10px; }
-  .sphere-wrap { position: relative; width: 340px; }
-  .sphere-img {
-    width: 100%; display: block; border-radius: 3px;
-    filter: sepia(12%) brightness(0.98) contrast(0.97);
-    box-shadow: 0 0 0 1px var(--rose), 0 0 0 6px var(--parchment), 0 0 0 7px var(--rose), 0 8px 40px rgba(180,120,140,0.18);
-    transition: filter 0.5s;
-  }
-  .sphere-wrap:hover .sphere-img { filter: sepia(4%) brightness(1.01); }
-  .img-caption { font-family: var(--serif); font-size: 0.7rem; font-style: italic; color: var(--ink-light); text-align: center; }
+  /* SECTION RULE */
+  .section-rule{max-width:1120px;margin:0 auto;padding:0 2.5rem;}
+  .section-rule-inner{display:flex;align-items:center;border-top:1px solid var(--rose);border-bottom:1px solid var(--rose);padding:5px 0;}
+  .sr-ornament{font-family:var(--serif);font-style:italic;font-size:0.75rem;color:var(--rose-mid);padding:0 12px;}
+  .sr-label{font-family:var(--sans);font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--ink-light);padding:0 16px;border-left:1px solid var(--rose);border-right:1px solid var(--rose);}
 
-  /* ── SECTION RULE ── */
-  .section-rule { max-width: 1120px; margin: 0 auto; padding: 0 2.5rem; }
-  .section-rule-inner { display: flex; align-items: center; border-top: 1px solid var(--rose); border-bottom: 1px solid var(--rose); padding: 5px 0; }
-  .sr-ornament { font-family: var(--serif); font-style: italic; font-size: 0.75rem; color: var(--rose-mid); padding: 0 12px; }
-  .sr-label { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-light); padding: 0 16px; border-left: 1px solid var(--rose); border-right: 1px solid var(--rose); }
+  /* ABOUT */
+  #about{max-width:1120px;margin:0 auto;padding:5rem 2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+  .section-label{font-family:var(--sans);font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-light);margin-bottom:0.5rem;}
+  .section-title{font-family:var(--serif);font-size:clamp(1.8rem,2.6vw,2.4rem);font-weight:400;color:var(--ink);margin-bottom:1.6rem;line-height:1.2;}
+  .section-title em{font-style:italic;color:var(--rose-deep);}
+  .about-text p{font-family:var(--sans);color:var(--ink-mid);font-weight:300;font-size:0.97rem;line-height:1.9;margin-bottom:1rem;}
+  .about-text em{font-style:italic;font-family:var(--serif);color:var(--ink-mid);}
+  .skills-wrap{display:flex;flex-wrap:wrap;gap:7px;margin-top:1.4rem;}
+  .skill-tag{font-family:var(--sans);background:var(--lav-light);border:1px solid var(--lavender);color:#5a4a80;font-size:0.73rem;padding:4px 13px;border-radius:20px;}
+  .about-right{display:flex;flex-direction:column;gap:14px;}
+  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .stat-card{background:white;border:1px solid var(--rose);border-radius:16px;padding:1.2rem;text-align:center;transition:transform 0.2s;}
+  .stat-card:hover{transform:translateY(-3px);}
+  .stat-card.accent{background:var(--rose-light);}
+  .stat-num{font-family:var(--serif);font-size:1.7rem;color:var(--ink);display:block;margin-bottom:3px;}
+  .stat-lbl{font-family:var(--sans);font-size:0.67rem;color:var(--ink-light);letter-spacing:0.04em;}
+  .pullquote{background:var(--parchment);border:1px solid var(--rose);border-left:2px solid var(--rose-mid);border-radius:0 14px 14px 0;padding:1.2rem 1.5rem;position:relative;}
+  .pullquote::before{content:'\201C';font-family:var(--serif);font-size:3rem;color:var(--rose);position:absolute;top:-4px;left:10px;line-height:1;}
+  .pullquote blockquote{font-family:var(--serif);font-style:italic;font-size:0.93rem;color:var(--ink-mid);line-height:1.7;padding-left:1.2rem;margin-bottom:6px;}
+  .pullquote cite{font-family:var(--sans);font-size:0.68rem;color:var(--ink-light);letter-spacing:0.07em;text-transform:uppercase;font-style:normal;padding-left:1.2rem;}
+  .est-badge{display:inline-flex;align-items:center;gap:8px;background:var(--rose-light);border:1px solid var(--rose);border-radius:10px;padding:8px 14px;font-family:var(--sans);font-size:0.68rem;color:var(--ink-mid);letter-spacing:0.08em;}
+  .est-badge strong{color:var(--rose-deep);font-weight:500;}
 
-  /* ── ABOUT ── */
-  #about { max-width: 1120px; margin: 0 auto; padding: 5rem 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
-  .section-label { font-family: var(--sans); font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 0.5rem; }
-  .section-title { font-family: var(--serif); font-size: clamp(1.8rem, 2.6vw, 2.4rem); font-weight: 400; color: var(--ink); margin-bottom: 1.6rem; line-height: 1.2; }
-  .section-title em { font-style: italic; color: var(--rose-deep); }
-  .about-text p { font-family: var(--sans); color: var(--ink-mid); font-weight: 300; font-size: 0.97rem; line-height: 1.9; margin-bottom: 1rem; }
-  .about-text em { font-style: italic; font-family: var(--serif); color: var(--ink-mid); }
-  .skills-wrap { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 1.4rem; }
-  .skill-tag { font-family: var(--sans); background: var(--lav-light); border: 1px solid var(--lavender); color: #5a4a80; font-size: 0.73rem; padding: 4px 13px; border-radius: 20px; }
-  .about-right { display: flex; flex-direction: column; gap: 14px; }
-  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .stat-card { background: white; border: 1px solid var(--rose); border-radius: 16px; padding: 1.2rem; text-align: center; transition: transform 0.2s; }
-  .stat-card:hover { transform: translateY(-3px); }
-  .stat-card.accent { background: var(--rose-light); }
-  .stat-num { font-family: var(--serif); font-size: 1.7rem; color: var(--ink); display: block; margin-bottom: 3px; }
-  .stat-lbl { font-family: var(--sans); font-size: 0.67rem; color: var(--ink-light); letter-spacing: 0.04em; }
-  .pullquote { background: var(--parchment); border: 1px solid var(--rose); border-left: 2px solid var(--rose-mid); border-radius: 0 14px 14px 0; padding: 1.2rem 1.5rem; position: relative; }
-  .pullquote::before { content: '\201C'; font-family: var(--serif); font-size: 3rem; color: var(--rose); position: absolute; top: -4px; left: 10px; line-height: 1; }
-  .pullquote blockquote { font-family: var(--serif); font-style: italic; font-size: 0.93rem; color: var(--ink-mid); line-height: 1.7; padding-left: 1.2rem; margin-bottom: 6px; }
-  .pullquote cite { font-family: var(--sans); font-size: 0.68rem; color: var(--ink-light); letter-spacing: 0.07em; text-transform: uppercase; font-style: normal; padding-left: 1.2rem; }
-  .est-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--rose-light); border: 1px solid var(--rose); border-radius: 10px; padding: 8px 14px; font-family: var(--sans); font-size: 0.68rem; color: var(--ink-mid); letter-spacing: 0.08em; }
-  .est-badge strong { color: var(--rose-deep); font-weight: 500; }
+  /* PROJECTS & MEDIA shared grid */
+  #projects,#media{max-width:1120px;margin:0 auto;padding:5rem 2.5rem;}
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;}
+  .project-card{background:white;border:1px solid #ecdde3;border-radius:20px;padding:1.8rem;transition:all 0.25s;position:relative;overflow:hidden;}
+  .project-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--rose),var(--lavender));opacity:0;transition:opacity 0.25s;}
+  .project-card:hover{transform:translateY(-5px);box-shadow:0 14px 38px rgba(200,140,160,0.13);}
+  .project-card:hover::before{opacity:1;}
+  .card-vol{font-family:var(--sans);font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-light);margin-bottom:5px;}
+  .project-card h3{font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:0.6rem;line-height:1.35;}
+  .project-card p{font-family:var(--sans);font-size:0.86rem;color:var(--ink-mid);font-weight:300;line-height:1.75;margin-bottom:1.1rem;}
+  .proj-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1.1rem;}
+  .proj-tag{font-family:var(--sans);background:#f7f0e0;color:#7a6040;font-size:0.68rem;padding:3px 9px;border-radius:20px;border:1px solid #e8d8b0;}
+  .proj-links{display:flex;gap:8px;}
+  .proj-link{font-family:var(--sans);font-size:0.76rem;color:var(--ink-mid);text-decoration:none;border:1px solid var(--rose);padding:5px 13px;border-radius:20px;transition:all 0.2s;}
+  .proj-link:hover{background:var(--rose-light);color:var(--ink);}
+  .proj-add{border:2px dashed var(--rose);background:transparent;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;min-height:200px;font-family:var(--sans);color:var(--ink-light);font-size:0.84rem;border-radius:20px;}
 
-  /* ── PROJECTS ── */
-  #projects { max-width: 1120px; margin: 0 auto; padding: 5rem 2.5rem; }
-  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; }
-  .project-card { background: white; border: 1px solid #ecdde3; border-radius: 20px; padding: 1.8rem; transition: all 0.25s; position: relative; overflow: hidden; }
-  .project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--rose), var(--lavender)); opacity: 0; transition: opacity 0.25s; }
-  .project-card:hover { transform: translateY(-5px); box-shadow: 0 14px 38px rgba(200,140,160,0.13); }
-  .project-card:hover::before { opacity: 1; }
-  .card-vol { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 5px; }
-  .project-card h3 { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; color: var(--ink); margin-bottom: 0.6rem; line-height: 1.35; }
-  .project-card p { font-family: var(--sans); font-size: 0.86rem; color: var(--ink-mid); font-weight: 300; line-height: 1.75; margin-bottom: 1.1rem; }
-  .proj-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 1.1rem; }
-  .proj-tag { font-family: var(--sans); background: #f7f0e0; color: #7a6040; font-size: 0.68rem; padding: 3px 9px; border-radius: 20px; border: 1px solid #e8d8b0; }
-  .proj-links { display: flex; gap: 8px; }
-  .proj-link { font-family: var(--sans); font-size: 0.76rem; color: var(--ink-mid); text-decoration: none; border: 1px solid var(--rose); padding: 5px 13px; border-radius: 20px; transition: all 0.2s; }
-  .proj-link:hover { background: var(--rose-light); color: var(--ink); }
-  .proj-add { border: 2px dashed var(--rose); background: transparent; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 10px; min-height: 200px; font-family: var(--sans); color: var(--ink-light); font-size: 0.84rem; border-radius: 20px; }
+  /* WRITING / TANGENTIAL */
+  #writing{max-width:1120px;margin:0 auto;padding:5rem 2.5rem;}
+  .tangential-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:1.8rem;flex-wrap:wrap;gap:1rem;}
+  .tangential-name{font-family:var(--serif);font-size:clamp(1.8rem,2.6vw,2.4rem);font-weight:400;font-style:italic;color:var(--ink);line-height:1.2;margin-bottom:4px;}
+  .tangential-desc{font-family:var(--sans);font-size:0.82rem;color:var(--ink-light);font-weight:300;max-width:440px;line-height:1.6;}
+  .tangential-sub-btn{display:inline-flex;align-items:center;gap:7px;background:var(--rose-light);border:1px solid var(--rose-mid);border-radius:50px;padding:9px 20px;font-family:var(--sans);font-size:0.82rem;font-weight:500;color:var(--rose-deep);text-decoration:none;transition:all 0.2s;white-space:nowrap;}
+  .tangential-sub-btn:hover{background:var(--rose);color:var(--ink);}
+  .notes-masthead{display:grid;grid-template-columns:90px 1fr 96px 24px;gap:16px;padding:0 1.4rem 8px;border-bottom:2px solid var(--ink);}
+  .masthead-col{font-family:var(--sans);font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-light);}
+  .notes-list{display:flex;flex-direction:column;}
+  .note-row{display:grid;grid-template-columns:90px 1fr 96px 24px;gap:16px;align-items:center;padding:1.05rem 1.4rem;text-decoration:none;color:inherit;border-bottom:1px solid var(--rose-light);transition:background 0.15s;}
+  .note-row:hover{background:var(--rose-light);}
+  .note-date{font-family:var(--sans);font-size:0.71rem;color:var(--ink-light);}
+  .note-title{font-family:var(--serif);font-size:0.96rem;font-weight:400;font-style:italic;}
+  .note-badge{font-family:var(--sans);font-size:0.63rem;background:var(--lav-light);border:1px solid var(--lavender);color:#6a5a90;padding:2px 9px;border-radius:20px;justify-self:start;}
+  .note-arrow{color:var(--rose-mid);font-size:0.88rem;}
+  .view-all-row{padding:1rem 1.4rem;text-align:center;border-bottom:1px solid var(--rose);}
+  .view-all-link{font-family:var(--sans);font-size:0.78rem;color:var(--ink-light);text-decoration:none;letter-spacing:0.06em;transition:color 0.2s;}
+  .view-all-link:hover{color:var(--rose-deep);}
 
-  /* ── THE TANGENTIAL (blog section) ── */
-  #writing { max-width: 1120px; margin: 0 auto; padding: 5rem 2.5rem; }
+  /* CONTACT */
+  #contact{padding:6rem 2.5rem;text-align:center;}
+  .contact-inner{max-width:540px;margin:0 auto;}
+  .contact-tagline{font-family:var(--sans);color:var(--ink-mid);font-weight:300;font-size:0.97rem;margin-bottom:2.4rem;line-height:1.88;}
+  .contact-links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
+  .contact-link{display:inline-flex;align-items:center;gap:8px;background:white;border:1px solid var(--rose);border-radius:50px;padding:10px 20px;font-family:var(--sans);font-size:0.83rem;color:var(--ink);text-decoration:none;transition:all 0.2s;}
+  .contact-link:hover{background:var(--rose-light);border-color:var(--rose-mid);}
 
-  .tangential-header {
-    display: flex; align-items: flex-end; justify-content: space-between;
-    margin-bottom: 1.8rem; flex-wrap: wrap; gap: 1rem;
-  }
-  .tangential-title-block { }
-  .tangential-name {
-    font-family: var(--serif); font-size: clamp(1.8rem, 2.6vw, 2.4rem);
-    font-weight: 400; font-style: italic; color: var(--ink); line-height: 1.2; margin-bottom: 4px;
-  }
-  .tangential-desc {
-    font-family: var(--sans); font-size: 0.82rem; color: var(--ink-light);
-    font-weight: 300; max-width: 440px; line-height: 1.6;
-  }
-  .tangential-sub-btn {
-    display: inline-flex; align-items: center; gap: 7px;
-    background: var(--rose-light); border: 1px solid var(--rose-mid);
-    border-radius: 50px; padding: 9px 20px;
-    font-family: var(--sans); font-size: 0.82rem; font-weight: 500;
-    color: var(--rose-deep); text-decoration: none; transition: all 0.2s;
-    white-space: nowrap;
-  }
-  .tangential-sub-btn:hover { background: var(--rose); color: var(--ink); }
+  /* FOOTER */
+  footer{border-top:1px solid var(--rose);padding:1.8rem 2.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.8rem;}
+  .footer-logo{font-family:var(--serif);font-size:0.95rem;font-style:italic;color:var(--ink);}
+  .footer-meta{font-family:var(--sans);font-size:0.65rem;color:var(--ink-light);letter-spacing:0.08em;text-transform:uppercase;text-align:center;}
+  .footer-note{font-family:var(--sans);font-size:0.66rem;color:var(--ink-light);}
+  footer a{color:var(--ink-light);text-decoration:none;}
+  footer a:hover{color:var(--rose-deep);}
 
-  /* notes masthead */
-  .notes-masthead { display: grid; grid-template-columns: 72px 1fr 96px 24px; gap: 16px; padding: 0 1.4rem 8px; border-bottom: 2px solid var(--ink); }
-  .masthead-col { font-family: var(--sans); font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-light); }
-  .notes-list { display: flex; flex-direction: column; }
-  .note-row { display: grid; grid-template-columns: 72px 1fr 96px 24px; gap: 16px; align-items: center; padding: 1.05rem 1.4rem; text-decoration: none; color: inherit; border-bottom: 1px solid var(--rose-light); transition: background 0.15s; }
-  .note-row:hover { background: var(--rose-light); }
-  .note-date { font-family: var(--sans); font-size: 0.71rem; color: var(--ink-light); }
-  .note-title { font-family: var(--serif); font-size: 0.96rem; font-weight: 400; font-style: italic; }
-  .note-badge { font-family: var(--sans); font-size: 0.63rem; background: var(--lav-light); border: 1px solid var(--lavender); color: #6a5a90; padding: 2px 9px; border-radius: 20px; justify-self: start; }
-  .note-arrow { color: var(--rose-mid); font-size: 0.88rem; }
-
-  .view-all-row {
-    padding: 1rem 1.4rem; text-align: center;
-    border-bottom: 1px solid var(--rose);
-  }
-  .view-all-link {
-    font-family: var(--sans); font-size: 0.78rem; color: var(--ink-light);
-    text-decoration: none; letter-spacing: 0.06em;
-    transition: color 0.2s;
-  }
-  .view-all-link:hover { color: var(--rose-deep); }
-
-  /* ── CONTACT ── */
-  #contact { padding: 6rem 2.5rem; text-align: center; }
-  .contact-inner { max-width: 540px; margin: 0 auto; }
-  .contact-tagline { font-family: var(--sans); color: var(--ink-mid); font-weight: 300; font-size: 0.97rem; margin-bottom: 2.4rem; line-height: 1.88; }
-  .contact-links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-  .contact-link { display: inline-flex; align-items: center; gap: 8px; background: white; border: 1px solid var(--rose); border-radius: 50px; padding: 10px 20px; font-family: var(--sans); font-size: 0.83rem; color: var(--ink); text-decoration: none; transition: all 0.2s; }
-  .contact-link:hover { background: var(--rose-light); border-color: var(--rose-mid); }
-
-  /* ── FOOTER ── */
-  footer { border-top: 1px solid var(--rose); padding: 1.8rem 2.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; }
-  .footer-logo { font-family: var(--serif); font-size: 0.95rem; font-style: italic; color: var(--ink); }
-  .footer-meta { font-family: var(--sans); font-size: 0.65rem; color: var(--ink-light); letter-spacing: 0.08em; text-transform: uppercase; text-align: center; }
-  .footer-note { font-family: var(--sans); font-size: 0.66rem; color: var(--ink-light); }
-  footer a { color: var(--ink-light); text-decoration: none; }
-  footer a:hover { color: var(--rose-deep); }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 820px) {
-    .hero { grid-template-columns: 1fr; min-height: auto; gap: 3rem; padding-top: 3rem; }
-    .hero-image-col { order: -1; }
-    .sphere-wrap { width: 260px; }
-    #about { grid-template-columns: 1fr; gap: 2.5rem; }
-    .nav-vol, .nav-divider { display: none; }
-    .notes-masthead, .note-row { grid-template-columns: 1fr auto; }
-    .masthead-col:first-child, .note-date, .masthead-col:last-child, .note-arrow { display: none; }
-    .tangential-header { flex-direction: column; align-items: flex-start; }
-    footer { flex-direction: column; text-align: center; }
+  /* RESPONSIVE */
+  @media (max-width:820px){
+    .hero{grid-template-columns:1fr;min-height:auto;gap:3rem;padding-top:3rem;}
+    .hero-image-col{order:-1;}
+    .sphere-wrap{width:260px;}
+    #about{grid-template-columns:1fr;gap:2.5rem;}
+    .nav-vol,.nav-divider{display:none;}
+    .notes-masthead,.note-row{grid-template-columns:1fr auto;}
+    .masthead-col:first-child,.note-date,.masthead-col:last-child,.note-arrow{display:none;}
+    .tangential-header{flex-direction:column;align-items:flex-start;}
+    footer{flex-direction:column;text-align:center;}
   }
 </style>
 </head>
@@ -223,6 +164,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#writing">Writing</a></li>
+    <li><a href="#media">Media</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -240,7 +182,7 @@
     <p class="hero-bio">
       I study people through data and worry about them through writing.
       Statistical researcher, political thinker, and author of
-      <a href="https://thetangentialthoughts.substack.com" target="_blank" style="color:var(--rose-deep);text-decoration:none;font-style:italic;">The Tangential</a>
+      <a href="https://thetangentialthoughts.substack.com" target="_blank">The Tangential</a>
       — a newsletter about everything that doesn't quite fit.
     </p>
     <p class="stat-symbols">σ &nbsp;·&nbsp; μ &nbsp;·&nbsp; β &nbsp;·&nbsp; ∞</p>
@@ -249,10 +191,8 @@
       <a href="https://thetangentialthoughts.substack.com" target="_blank" class="btn btn-outline">Read The Tangential</a>
     </div>
   </div>
-
   <div class="hero-image-col">
     <div class="sphere-wrap">
-      <!-- Save your Escher sphere image as escher.jpg in the same folder -->
       <img class="sphere-img" src="escher.jpg" alt="Srisha Raj in an Escher-style reflecting sphere">
     </div>
     <p class="img-caption">Hand with Reflecting Sphere · 2026</p>
@@ -260,20 +200,14 @@
 </div>
 
 <!-- RULE -->
-<div class="section-rule">
-  <div class="section-rule-inner">
-    <span class="sr-ornament">✦</span>
-    <span class="sr-label">About</span>
-    <span class="sr-ornament">✦</span>
-  </div>
-</div>
+<div class="section-rule"><div class="section-rule-inner"><span class="sr-ornament">✦</span><span class="sr-label">About</span><span class="sr-ornament">✦</span></div></div>
 
 <!-- ABOUT -->
 <section id="about">
   <div class="about-text">
     <p class="section-label">About me</p>
     <h2 class="section-title">Where <em>data</em> meets<br>the human story</h2>
-    <p>I'm a statistical researcher who got into the field because I couldn't stop asking why. Why do people vote against their interests? Why does the same policy work in one place and fail in another?</p>
+    <p>I'm a third-year student at UC Berkeley studying Statistics, with concentrations in Demography and Public Policy. I got into the field because I couldn't stop asking why. Why do people vote against their interests? Why does the same policy work in one place and fail in another?</p>
     <p>My tools are R and Python. My real interest is in the gap between what we can measure and what actually matters. I write about politics, philosophy, and the occasional inconvenient truth — not always in that order.</p>
     <p><em>Currently writing, coding, and asking inconvenient questions.</em></p>
     <div class="skills-wrap">
@@ -287,32 +221,17 @@
       <span class="skill-tag">academic writing</span>
     </div>
   </div>
-
   <div class="about-right">
     <div class="stat-grid">
-      <div class="stat-card accent">
-        <span class="stat-num">R</span>
-        <span class="stat-lbl">Primary language</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-num">Py</span>
-        <span class="stat-lbl">Also Python</span>
-      </div>
-      <div class="stat-card">
-        <span class="stat-num">↯</span>
-        <span class="stat-lbl">Reproducible code</span>
-      </div>
-      <div class="stat-card accent">
-        <span class="stat-num">✦</span>
-        <span class="stat-lbl">Analysis + writing</span>
-      </div>
+      <div class="stat-card accent"><span class="stat-num">R</span><span class="stat-lbl">Primary language</span></div>
+      <div class="stat-card"><span class="stat-num">Py</span><span class="stat-lbl">Also Python</span></div>
+      <div class="stat-card"><span class="stat-num">↯</span><span class="stat-lbl">Reproducible code</span></div>
+      <div class="stat-card accent"><span class="stat-num">✦</span><span class="stat-lbl">Analysis + writing</span></div>
     </div>
-
     <div class="pullquote">
       <blockquote>Add your own quote here — something you love, something that captures you.</blockquote>
       <cite>— attribution</cite>
     </div>
-
     <div class="est-badge">
       <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
         <circle cx="7" cy="7" r="6" stroke="#e8a0b0" stroke-width="1"/>
@@ -325,72 +244,40 @@
 </section>
 
 <!-- RULE -->
-<div class="section-rule">
-  <div class="section-rule-inner">
-    <span class="sr-ornament">✦</span>
-    <span class="sr-label">Projects &amp; Papers</span>
-    <span class="sr-ornament">✦</span>
-  </div>
-</div>
+<div class="section-rule"><div class="section-rule-inner"><span class="sr-ornament">✦</span><span class="sr-label">Projects &amp; Papers</span><span class="sr-ornament">✦</span></div></div>
 
 <!-- PROJECTS -->
 <section id="projects">
   <h2 class="section-title" style="margin-bottom:2rem;">Work &amp; <em>research</em></h2>
   <div class="projects-grid">
-
     <div class="project-card">
       <p class="card-vol">Paper · Vol. I · 2024</p>
       <h3>Your first project title here</h3>
       <p>Describe your analysis, data source, and key finding in 2–3 sentences.</p>
-      <div class="proj-tags">
-        <span class="proj-tag">regression</span>
-        <span class="proj-tag">R</span>
-        <span class="proj-tag">politics</span>
-      </div>
-      <div class="proj-links">
-        <a href="#" class="proj-link">↗ Paper</a>
-        <a href="#" class="proj-link">{ } Code</a>
-      </div>
+      <div class="proj-tags"><span class="proj-tag">regression</span><span class="proj-tag">R</span><span class="proj-tag">politics</span></div>
+      <div class="proj-links"><a href="#" class="proj-link">↗ Paper</a><a href="#" class="proj-link">{ } Code</a></div>
     </div>
-
     <div class="project-card">
       <p class="card-vol">Analysis · Vol. I · 2024</p>
       <h3>Your second project title here</h3>
       <p>Describe your analysis, data source, and key finding in 2–3 sentences.</p>
-      <div class="proj-tags">
-        <span class="proj-tag">Python</span>
-        <span class="proj-tag">pandas</span>
-        <span class="proj-tag">visualization</span>
-      </div>
-      <div class="proj-links">
-        <a href="#" class="proj-link">↗ Write-up</a>
-        <a href="#" class="proj-link">{ } Notebook</a>
-      </div>
+      <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">pandas</span><span class="proj-tag">visualization</span></div>
+      <div class="proj-links"><a href="#" class="proj-link">↗ Write-up</a><a href="#" class="proj-link">{ } Notebook</a></div>
     </div>
-
     <div class="proj-add">
-      <svg width="26" height="26" fill="none" stroke="var(--rose-mid)" stroke-width="1.4" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/>
-      </svg>
+      <svg width="26" height="26" fill="none" stroke="var(--rose-mid)" stroke-width="1.4" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
       <span>More coming soon</span>
     </div>
-
   </div>
 </section>
 
 <!-- RULE -->
-<div class="section-rule">
-  <div class="section-rule-inner">
-    <span class="sr-ornament">✦</span>
-    <span class="sr-label">The Tangential</span>
-    <span class="sr-ornament">✦</span>
-  </div>
-</div>
+<div class="section-rule"><div class="section-rule-inner"><span class="sr-ornament">✦</span><span class="sr-label">The Tangential</span><span class="sr-ornament">✦</span></div></div>
 
-<!-- WRITING / THE TANGENTIAL -->
+<!-- WRITING -->
 <section id="writing">
   <div class="tangential-header">
-    <div class="tangential-title-block">
+    <div>
       <h2 class="tangential-name">The Tangential</h2>
       <p class="tangential-desc">Where I explore what doesn't quite fit — personal essays, policy thoughts, cultural commentary, book reviews, and the occasional satirical take.</p>
     </div>
@@ -399,17 +286,13 @@
       Subscribe on Substack
     </a>
   </div>
-
   <div class="notes-masthead">
     <span class="masthead-col">Date</span>
     <span class="masthead-col">Title</span>
     <span class="masthead-col">Tag</span>
     <span class="masthead-col"></span>
   </div>
-
   <div class="notes-list">
-    <!-- Replace these rows with your actual Substack posts -->
-    <!-- Format: date | title (links to substack post URL) | tag | → -->
     <a href="https://thetangentialthoughts.substack.com/p/the-pro-life-blind-spot-californias" target="_blank" class="note-row">
       <span class="note-date">May 2026</span>
       <span class="note-title">The Pro-Life Blind Spot: California's IVF Mandate</span>
@@ -417,85 +300,55 @@
       <span class="note-arrow">→</span>
     </a>
     <a href="https://thetangentialthoughts.substack.com/p/how-to-be-a-woman" target="_blank" class="note-row">
-      <span class="note-date">April 2026</span>
+      <span class="note-date">Apr 2026</span>
       <span class="note-title">How to be a Woman</span>
-      <span class="note-badge">politics</span>
+      <span class="note-badge">essays</span>
       <span class="note-arrow">→</span>
     </a>
     <a href="https://thetangentialthoughts.substack.com/p/the-euphemism-we-call-reproductive" target="_blank" class="note-row">
-      <span class="note-date">September 2025</span>
-      <span class="note-title">The Euphemism We Call ‘Reproductive Care’</span>
+      <span class="note-date">Sep 2025</span>
+      <span class="note-title">The Euphemism We Call 'Reproductive Care'</span>
       <span class="note-badge">culture</span>
       <span class="note-arrow">→</span>
     </a>
     <a href="https://www.washingtonexaminer.com/opinion/3130612/no-generation-z-wont-mind-own-business/" target="_blank" class="note-row">
-      <span class="note-date">August 2024 date</span>
-      <span class="note-title">No, Generation Z won’t ‘mind’ its own ‘business’</span>
-      <span class="note-badge">books</span>
+      <span class="note-date">Aug 2024</span>
+      <span class="note-title">No, Generation Z won't 'mind' its own 'business'</span>
+      <span class="note-badge">opinion</span>
       <span class="note-arrow">→</span>
     </a>
     <a href="https://medium.com/@thetangential/dying-on-our-terms-f1300855be99" target="_blank" class="note-row">
       <span class="note-date">May 2024</span>
       <span class="note-title">Dying on our Terms?</span>
-      <span class="note-badge">books</span>
+      <span class="note-badge">philosophy</span>
       <span class="note-arrow">→</span>
     </a>
     <a href="https://medium.com/@thetangential/rethinking-equity-in-public-education-1b130711a0cf" target="_blank" class="note-row">
-      <span class="note-date">March 2024</span>
+      <span class="note-date">Mar 2024</span>
       <span class="note-title">Rethinking Equity in Public Education</span>
-      <span class="note-badge">books</span>
+      <span class="note-badge">politics</span>
       <span class="note-arrow">→</span>
     </a>
   </div>
-
   <div class="view-all-row">
-    <a href="https://thetangentialthoughts.substack.com" target="_blank" class="view-all-link">
-      Read all essays on Substack →
-    </a>
+    <a href="https://thetangentialthoughts.substack.com" target="_blank" class="view-all-link">Read all essays on Substack →</a>
   </div>
 </section>
 
 <!-- RULE -->
-<div class="section-rule">
-  <div class="section-rule-inner">
-    <span class="sr-ornament">✦</span>
-    <span class="sr-label">Contact</span>
-    <span class="sr-ornament">✦</span>
-  </div>
-</div>
-
-<!-- RULE -->
-<div class="section-rule">
-  <div class="section-rule-inner">
-    <span class="sr-ornament">✦</span>
-    <span class="sr-label">In the Media</span>
-    <span class="sr-ornament">✦</span>
-  </div>
-</div>
+<div class="section-rule"><div class="section-rule-inner"><span class="sr-ornament">✦</span><span class="sr-label">In the Media</span><span class="sr-ornament">✦</span></div></div>
 
 <!-- MEDIA -->
-<section id="media" style="max-width:1120px;margin:0 auto;padding:5rem 2.5rem;">
+<section id="media">
   <h2 class="section-title" style="margin-bottom:2rem;">Talks &amp; <em>appearances</em></h2>
   <div class="projects-grid">
 
     <div class="project-card">
-      <p class="card-vol">Smithsonian · National Air and Space Museum</p>
-      <h3>"She Can" STEM Camp Takes Off</h3>
-      <p>Featured at the Smithsonian National Air and Space Museum's She Can STEM camp.</p>
-      <div class="proj-tags"><span class="proj-tag">STEM</span><span class="proj-tag">education</span></div>
-      <div class="proj-links">
-        <a href="https://www.youtube.com/watch?v=avZ1ktQsB0o" target="_blank" class="proj-link">▶ Watch</a>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <p class="card-vol">Debate · National Championship</p>
-      <h3>Great Communicator Debate Series National Championship</h3>
-      <p>Competing at the national level in the Great Communicator Debate Series.</p>
-      <div class="proj-tags"><span class="proj-tag">debate</span><span class="proj-tag">policy</span></div>
-      <div class="proj-links">
-        <a href="https://www.youtube.com/watch?v=YXwkkBCMNTk" target="_blank" class="proj-link">▶ Watch</a>
-      </div>
+      <p class="card-vol">Feature · UC Berkeley Bixby Center · Dec 2025</p>
+      <h3>Exceptional Students in PH181: Poverty and Population</h3>
+      <p>Featured by the Bixby Center for Population, Health &amp; Sustainability at UC Berkeley for communicating directly with U.S. representatives on reproductive health policy.</p>
+      <div class="proj-tags"><span class="proj-tag">reproductive health</span><span class="proj-tag">policy</span><span class="proj-tag">UC Berkeley</span></div>
+      <div class="proj-links"><a href="https://bixby.berkeley.edu/news/professor-ndola-pratas-exceptional-undergraduate-students-ph181-course-poverty-and-population" target="_blank" class="proj-link">↗ Read feature</a></div>
     </div>
 
     <div class="project-card">
@@ -503,9 +356,7 @@
       <h3>Pastures and Fences of Education</h3>
       <p>On being labelled gifted, alternative education, and what school gets wrong about curious kids.</p>
       <div class="proj-tags"><span class="proj-tag">podcast</span><span class="proj-tag">education</span></div>
-      <div class="proj-links">
-        <a href="https://youtu.be/mt_yEQxZxXU?si=xf8ajw95IMZ1LWto" target="_blank" class="proj-link">▶ Listen</a>
-      </div>
+      <div class="proj-links"><a href="https://youtu.be/mt_yEQxZxXU?si=xf8ajw95IMZ1LWto" target="_blank" class="proj-link">▶ Listen</a></div>
     </div>
 
     <div class="project-card">
@@ -513,9 +364,15 @@
       <h3>A Conversation With Prof. Bryan Caplan on Signaling, Education, and Employment</h3>
       <p>Sitting down with economist Bryan Caplan on what education actually signals — and whether it should.</p>
       <div class="proj-tags"><span class="proj-tag">interview</span><span class="proj-tag">economics</span></div>
-      <div class="proj-links">
-        <a href="https://www.youtube.com/watch?v=ILX9fIJvR8g" target="_blank" class="proj-link">▶ Watch</a>
-      </div>
+      <div class="proj-links"><a href="https://www.youtube.com/watch?v=ILX9fIJvR8g" target="_blank" class="proj-link">▶ Watch</a></div>
+    </div>
+
+    <div class="project-card">
+      <p class="card-vol">Debate · National Championship</p>
+      <h3>Great Communicator Debate Series National Championship</h3>
+      <p>Competing at the national level in the Great Communicator Debate Series.</p>
+      <div class="proj-tags"><span class="proj-tag">debate</span><span class="proj-tag">policy</span></div>
+      <div class="proj-links"><a href="https://www.youtube.com/watch?v=YXwkkBCMNTk" target="_blank" class="proj-link">▶ Watch</a></div>
     </div>
 
     <div class="project-card">
@@ -523,23 +380,22 @@
       <h3>MOVING FORWARD with Young Voices: Tim Walz, Gen Z Remarks, DNC</h3>
       <p>On the Young Voices radio show discussing Tim Walz, Gen Z political identity, and the DNC.</p>
       <div class="proj-tags"><span class="proj-tag">radio</span><span class="proj-tag">politics</span><span class="proj-tag">Gen Z</span></div>
-      <div class="proj-links">
-        <a href="https://www.youtube.com/watch?v=Nfk1y-iD_wo" target="_blank" class="proj-link">▶ Listen</a>
-      </div>
+      <div class="proj-links"><a href="https://www.youtube.com/watch?v=Nfk1y-iD_wo" target="_blank" class="proj-link">▶ Listen</a></div>
     </div>
 
     <div class="project-card">
-      <p class="card-vol">Feature · UC Berkeley Bixby Center · Dec 2025</p>
-      <h3>Exceptional Students in PH181: Poverty and Population</h3>
-      <p>Featured by the Bixby Center for Population, Health & Sustainability at UC Berkeley for communicating directly with U.S. representatives on reproductive health policy.</p>
-      <div class="proj-tags"><span class="proj-tag">reproductive health</span><span class="proj-tag">policy</span><span class="proj-tag">UC Berkeley</span></div>
-      <div class="proj-links">
-        <a href="https://bixby.berkeley.edu/news/professor-ndola-pratas-exceptional-undergraduate-students-ph181-course-poverty-and-population" target="_blank" class="proj-link">↗ Read feature</a>
-      </div>
+      <p class="card-vol">Smithsonian · National Air and Space Museum</p>
+      <h3>"She Can" STEM Camp Takes Off</h3>
+      <p>Featured at the Smithsonian National Air and Space Museum's She Can STEM camp.</p>
+      <div class="proj-tags"><span class="proj-tag">STEM</span><span class="proj-tag">education</span></div>
+      <div class="proj-links"><a href="https://www.youtube.com/watch?v=avZ1ktQsB0o" target="_blank" class="proj-link">▶ Watch</a></div>
     </div>
 
   </div>
 </section>
+
+<!-- RULE -->
+<div class="section-rule"><div class="section-rule-inner"><span class="sr-ornament">✦</span><span class="sr-label">Contact</span><span class="sr-ornament">✦</span></div></div>
 
 <!-- CONTACT -->
 <section id="contact">
@@ -548,11 +404,11 @@
     <h2 class="section-title" style="text-align:center;">Let's <em>connect</em></h2>
     <p class="contact-tagline">Open to collaborations, feedback on my work, or just a conversation about statistics, philosophy, and the things that don't fit neatly into either.</p>
     <div class="contact-links">
-      <a href="https://github.com/srisha-raj" class="contact-link">
+      <a href="https://github.com/srisha-raj" target="_blank" class="contact-link">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
         GitHub
       </a>
-      <a href="srisharaj@berkeley.edu" class="contact-link">
+      <a href="mailto:srisharaj@berkeley.edu" class="contact-link">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
         Email
       </a>
@@ -560,7 +416,7 @@
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v10a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/><path d="M4 4l8 9 8-9"/></svg>
         Substack
       </a>
-      <a href="https://linkedin.com/in/srisha-raj" class="contact-link">
+      <a href="https://linkedin.com/in/srisha-raj" target="_blank" class="contact-link">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
         LinkedIn
       </a>
